@@ -2,7 +2,7 @@
 const productos = [
   {
     id: 1,
-    nombre: "Paleta de Sombras Andrea Earth", // <-- Cambiado de Sienna a Andrea
+    nombre: "Paleta de Sombras Andrea Earth",
     descripcion: "9 tonos ultra-pigmentados cafés cálidos y terracotas",
     precio: 85000,
     categoria: "Paletas",
@@ -50,7 +50,8 @@ const productos = [
   }
 ];
 
-const telefono = "573186848158";
+// Configuración del número de WhatsApp (Sin espacios ni caracteres especiales)
+const telefono = "573178074597";
 
 let carrito = new Map();
 let ratings = {};
@@ -153,6 +154,7 @@ function renderCarrito() {
 
     carrito.forEach(producto => {
       total += producto.precio * producto.cantidad;
+      amount = producto.cantidad; // Variable interna auxiliar
       cantidad += producto.cantidad;
 
       lista.innerHTML += `
@@ -187,7 +189,6 @@ function finalizarCompra() {
     return;
   }
 
-  // Modificado con el nombre comercial del cliente:
   let mensaje = "Hola Andrea Makeup, quiero hacer este pedido:\n\n";
   let total = 0;
 
@@ -198,7 +199,7 @@ function finalizarCompra() {
   });
 
   mensaje += `\nTotal: ${formatear(total)}\n`;
-  mensaje += "Entrega: domicilio en Zipaquirá o envío nacional\n";
+  mensaje += "Entrega: domicilio en Bogotá o envío nacional\n";
   mensaje += "Método de pago: por confirmar";
 
   const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
